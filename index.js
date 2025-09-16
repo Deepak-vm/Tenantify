@@ -2,6 +2,7 @@ import dotenv from "dotenv"
 import express, { urlencoded } from "express"
 import {prisma} from "./src/db/db.js"
 import tenantRoutes from './src/routes/tenantRoutes.js'
+import authRoutes from './src/routes/authRoutes.js'
 const PORT = process.env.PORT || 4001
 
 
@@ -13,6 +14,7 @@ app.use(urlencoded({extended:true}))
 
 //Routes
 app.use('/tenants' , tenantRoutes)
+app.use('/auth' , authRoutes)
 
 app.get('/health' , async(req , res)=>{
     try {
